@@ -15,6 +15,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Cappasity.set(this, "cappasity"); // set your user alias here
+        Cappasity.set(this, "CHANGE_IT"); // set your user alias here
     }
 }
