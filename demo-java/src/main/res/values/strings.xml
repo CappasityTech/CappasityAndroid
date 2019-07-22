@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Demo Java</string>
+    <string name="do_search_request">Do search request</string>
+    <string name="search">Search</string>
+</resources>
