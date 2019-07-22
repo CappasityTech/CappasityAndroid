@@ -15,6 +15,6 @@ import com.cappasity.framework.Cappasity
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        Cappasity.set(this, "CHANGE_IT") // set your user alias here
+        Cappasity.set(this, "cappasity") // set your user alias here
     }
 }

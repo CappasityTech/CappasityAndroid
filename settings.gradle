@@ -1,1 +1,1 @@
-include ':demo-java', ':demo', ':cappasity-framework'
+include ':demo-java', ':demo-kotlin', ':cappasity-framework'

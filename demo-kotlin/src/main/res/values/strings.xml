@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cappasity Android Framework Demo</string>
+    <string name="app_name">Demo Kotlin</string>
     <string name="do_search_request">Do search request</string>
     <string name="search">Search</string>
 </resources>

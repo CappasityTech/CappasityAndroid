@@ -102,7 +102,7 @@ public class ModelFragment extends Fragment {
                         query,
                         new CappasityModelService.Callback() {
                             @Override
-                            public void onSuccess(@NotNull CappasityModel cappasityModel) {
+                            public void onSuccess(@NotNull CappasityModel model) {
                                 onInteractionListener.openModel(model);
                             }
 
