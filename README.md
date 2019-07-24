@@ -1,4 +1,4 @@
-# Cappasity Android Framework v0.4.7
+# Cappasity Android Framework v0.4.8
 
 CappasityFramework provides functionality for working with models on the Cappasity platform, i.e.:
 * accessing models,
