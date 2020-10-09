@@ -3,7 +3,7 @@
 //
 // CONTENT IS PROHIBITED FROM USAGE. CAPPASITY INC. CONFIDENTIAL.
 //
-// Copyright (C) Cappasity Inc. 2013-2019. All rights reserved.
+// Copyright (C) Cappasity Inc. 2013-2020. All rights reserved.
 //--------------------------------------------------------------------------------------
 
 package com.cappasity.demojava;
@@ -15,6 +15,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Cappasity.set(this, "CHANGE_IT"); // set your user alias here
+        Cappasity.initialize(this, "cappasity"); // set your user alias here
     }
 }

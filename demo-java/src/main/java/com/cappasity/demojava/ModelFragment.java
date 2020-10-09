@@ -3,7 +3,7 @@
 //
 // CONTENT IS PROHIBITED FROM USAGE. CAPPASITY INC. CONFIDENTIAL.
 //
-// Copyright (C) Cappasity Inc. 2013-2019. All rights reserved.
+// Copyright (C) Cappasity Inc. 2013-2020. All rights reserved.
 //--------------------------------------------------------------------------------------
 
 package com.cappasity.demojava;
@@ -98,20 +98,11 @@ public class ModelFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchView.clearFocus();
-                Cappasity.getModelService().getModel(
-                        query,
-                        new CappasityModelService.Callback() {
-                            @Override
-                            public void onSuccess(@NotNull CappasityModel model) {
-                                onInteractionListener.openModel(model);
-                            }
-
-                            @Override
-                            public void onFailure(@NotNull CappasityException exception) {
-                                Snackbar.make(root, exception.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
-                            }
-                        }
-                );
+                if (query.contains("/")) {
+                    processLinkQuery(query);
+                } else {
+                    processSkuOrIdQuery(query);
+                }
                 return true;
             }
 
@@ -120,5 +111,39 @@ public class ModelFragment extends Fragment {
                 return false;
             }
         });
+    }
+
+    private void processLinkQuery(@NonNull String query) {
+        Cappasity.getModelService().getModelByLink(
+                query,
+                new CappasityModelService.Callback() {
+                    @Override
+                    public void onSuccess(@NotNull CappasityModel model) {
+                        onInteractionListener.openModel(model);
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull CappasityException exception) {
+                        Snackbar.make(root, exception.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
+                    }
+                }
+        );
+    }
+
+    private void processSkuOrIdQuery(@NonNull String query) {
+        Cappasity.getModelService().getModel(
+                query,
+                new CappasityModelService.Callback() {
+                    @Override
+                    public void onSuccess(@NotNull CappasityModel model) {
+                        onInteractionListener.openModel(model);
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull CappasityException exception) {
+                        Snackbar.make(root, exception.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
+                    }
+                }
+        );
     }
 }

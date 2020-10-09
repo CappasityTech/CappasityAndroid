@@ -4,7 +4,7 @@
             android:id="@+id/nav_graph.xml" app:startDestination="@id/modelFragment">
 
     <fragment android:id="@+id/modelFragment"
-              android:name="com.cappasity.demo.ModelFragment"
+              android:name="com.cappasity.demokotlin.ModelFragment"
               android:label="Model">
         <action android:id="@+id/action_modelFragment_self" app:destination="@id/modelFragment"
                 app:launchSingleTop="true"/>

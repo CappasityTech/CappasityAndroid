@@ -3,10 +3,10 @@
 //
 // CONTENT IS PROHIBITED FROM USAGE. CAPPASITY INC. CONFIDENTIAL.
 //
-// Copyright (C) Cappasity Inc. 2013-2019. All rights reserved.
+// Copyright (C) Cappasity Inc. 2013-2020. All rights reserved.
 //--------------------------------------------------------------------------------------
 
-package com.cappasity.demo
+package com.cappasity.demokotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
