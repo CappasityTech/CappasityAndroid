@@ -3,10 +3,10 @@
 //
 // CONTENT IS PROHIBITED FROM USAGE. CAPPASITY INC. CONFIDENTIAL.
 //
-// Copyright (C) Cappasity Inc. 2013-2019. All rights reserved.
+// Copyright (C) Cappasity Inc. 2013-2020. All rights reserved.
 //--------------------------------------------------------------------------------------
 
-package com.cappasity.demo
+package com.cappasity.demokotlin
 
 import android.content.Context
 import android.os.Bundle
@@ -88,15 +88,11 @@ class ModelFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchView.clearFocus()
                 query?.let {
-                    Cappasity.modelService.getModel(
-                        query,
-                        onSuccess = { model ->
-                            onInteractionListener?.openModel(model)
-                        },
-                        onFailure = { cappasityException ->
-                            Snackbar.make(root, cappasityException.localizedMessage, Snackbar.LENGTH_LONG).show()
-                        }
-                    )
+                    if (query.contains('/')) {
+                        processLinkQuery(query)
+                    } else {
+                        processSkuOrIdQuery(query)
+                    }
                 }
                 return true
             }
@@ -107,5 +103,28 @@ class ModelFragment : Fragment() {
         })
     }
 
+    private fun processLinkQuery(query: String) {
+        Cappasity.modelService.getModelByLink(
+            query,
+            onSuccess = { model ->
+                onInteractionListener?.openModel(model)
+            },
+            onFailure = { cappasityException ->
+                Snackbar.make(root, cappasityException.localizedMessage, Snackbar.LENGTH_LONG).show()
+            }
+        )
+    }
 
+    private fun processSkuOrIdQuery(query: String)
+    {
+        Cappasity.modelService.getModel(
+            query,
+            onSuccess = { model ->
+                onInteractionListener?.openModel(model)
+            },
+            onFailure = { cappasityException ->
+                Snackbar.make(root, cappasityException.localizedMessage, Snackbar.LENGTH_LONG).show()
+            }
+        )
+    }
 }
