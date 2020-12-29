@@ -20,6 +20,7 @@ import com.cappasity.framework.Cappasity
 import com.cappasity.framework.CappasityModel
 import com.cappasity.framework.CappasityModelView
 import com.cappasity.framework.CappasityModelViewParams
+import com.cappasity.framework.CappasityException
 import com.google.android.material.snackbar.Snackbar
 
 const val ARG_MODEL = "model"
@@ -110,7 +111,7 @@ class ModelFragment : Fragment() {
                 onInteractionListener?.openModel(model)
             },
             onFailure = { cappasityException ->
-                Snackbar.make(root, cappasityException.localizedMessage, Snackbar.LENGTH_LONG).show()
+                ShowError(cappasityException)
             }
         )
     }
@@ -123,8 +124,20 @@ class ModelFragment : Fragment() {
                 onInteractionListener?.openModel(model)
             },
             onFailure = { cappasityException ->
-                Snackbar.make(root, cappasityException.localizedMessage, Snackbar.LENGTH_LONG).show()
+                ShowError(cappasityException)
             }
         )
+    }
+
+    private fun ShowError(exception: CappasityException) {
+        var message = exception.localizedMessage
+        if (message.isEmpty()) {
+            if (!exception.message.isNullOrEmpty()) {
+                message = exception.message!!
+            } else {
+                message = "Error " + exception.code.toString()
+            }
+        }
+        Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
     }
 }

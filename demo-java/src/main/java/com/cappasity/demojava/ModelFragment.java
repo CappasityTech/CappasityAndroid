@@ -124,7 +124,7 @@ public class ModelFragment extends Fragment {
 
                     @Override
                     public void onFailure(@NotNull CappasityException exception) {
-                        Snackbar.make(root, exception.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
+                        ShowError(exception);
                     }
                 }
         );
@@ -141,9 +141,20 @@ public class ModelFragment extends Fragment {
 
                     @Override
                     public void onFailure(@NotNull CappasityException exception) {
-                        Snackbar.make(root, exception.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
+                        ShowError(exception);
                     }
                 }
         );
+    }
+
+    private void ShowError(CappasityException exception) {
+        String message = exception.getLocalizedMessage();
+        if (message.isEmpty()) {
+            message = exception.getMessage();
+        }
+        if (message.isEmpty()) {
+            message = "Error " + Integer.toString(exception.getCode());
+        }
+        Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
     }
 }
