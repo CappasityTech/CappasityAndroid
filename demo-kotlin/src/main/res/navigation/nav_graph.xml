@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/nav_graph.xml" app:startDestination="@id/modelFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/modelListFragment">
 
-    <fragment android:id="@+id/modelFragment"
-              android:name="com.cappasity.demokotlin.ModelFragment"
-              android:label="Model">
-        <action android:id="@+id/action_modelFragment_self" app:destination="@id/modelFragment"
-                app:launchSingleTop="true"/>
+    <fragment
+        android:id="@+id/modelListFragment"
+        android:name="com.cappasity.demokotlin.ModelListFragment">
+
+        <action
+            android:id="@+id/action_modelFragment"
+            app:destination="@id/modelFragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/modelFragment"
+        android:name="com.cappasity.demokotlin.ModelFragment"/>
+
 </navigation>
