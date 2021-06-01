@@ -13,9 +13,10 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.cappasity.demokotlin.ModelFragment.Companion.ARG_MODEL
 import com.cappasity.framework.CappasityModel
 
-class MainActivity : AppCompatActivity(), ModelFragment.OnInteractionListener {
+class MainActivity : AppCompatActivity(), ModelListFragment.OnInteractionListener {
 
     private lateinit var navController: NavController
 
@@ -29,6 +30,6 @@ class MainActivity : AppCompatActivity(), ModelFragment.OnInteractionListener {
     override fun openModel(cappasityModel: CappasityModel) {
         val bundle = Bundle()
         bundle.putParcelable(ARG_MODEL, cappasityModel)
-        navController.navigate(R.id.action_modelFragment_self, bundle)
+        navController.navigate(R.id.action_modelFragment, bundle)
     }
 }

@@ -16,7 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import com.cappasity.framework.CappasityModel;
 
-public class MainActivity extends AppCompatActivity implements ModelFragment.OnInteractionListener {
+public class MainActivity extends AppCompatActivity implements ModelListFragment.OnInteractionListener {
 
     private NavController navController;
 
@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity implements ModelFragment.OnI
     public void openModel(CappasityModel cappasityModel) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(ModelFragment.ARG_MODEL, cappasityModel);
-        navController.navigate(R.id.action_modelFragment_self, bundle);
+        navController.navigate(R.id.action_modelFragment, bundle);
     }
 }
